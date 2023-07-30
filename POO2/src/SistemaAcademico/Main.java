@@ -50,7 +50,6 @@ public class Main {
 		POO1.setAluno(aluno2);
 		POO1.setAluno(aluno3);
 		
-		POO1.setProfessor(professor1);
 		POO1.setProfessor(professor2);
 		
 		fase2.ofertarDisciplina(POO1,bcc);
@@ -61,11 +60,11 @@ public class Main {
 		
 		fase1.ofertarDisciplina(DW1,bcc);
 		
-		//ver qual curso o aluno está cursando:
+		//1- ver qual curso o aluno está cursando:
 		
 		System.out.println("O aluno "+aluno1.getNome()+" está cursando "+aluno1.getCurso().getNome()+".\n");
 		
-		//ver as disciplinas de uma fase:
+		//2- ver as disciplinas de uma fase:
 		
 		System.out.println("Lista de disciplinas da "+fase2.getNome()+": ");
 		
@@ -75,15 +74,24 @@ public class Main {
             System.out.println(disciplina.getNome()); 
 		}	
 		
-		//ver quais professores lessionam determinada matéria:
+		//3- ver quais professores lessionam determinada matéria:
 		System.out.println("\nLista de professores que lessionam a matéria: "+POO1.getNome());
 		
 		List<Professor> lista_pro = POO1.getProfessores();		
 		for (Professor professor : lista_pro) {
 	            System.out.println(professor.getNome()); 
-	    }							
+	    }				
+		System.out.println("");
 		
-		//ver quais disciplinas foram ofertadas no curso:
+		//4- qual professor colocou a frequencia/avaliacao
+		
+		Avaliacao aval1 = new Avaliacao("9.5",aluno3, professor1, DW1);
+		Frequencia freq1 = new Frequencia("80%",aluno3, professor1, DW1);
+		
+		aval1.verAvaliacao();
+		freq1.verFrequencia();
+		
+		//5- ver quais disciplinas foram ofertadas no curso:
 		
 		bcc.verDisciplinasOfertadas();
 		
