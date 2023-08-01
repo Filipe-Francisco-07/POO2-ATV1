@@ -46,17 +46,24 @@ public class Main {
 		aluno2.setCurso(bcc);
 		aluno3.setCurso(bcc);
 		
-		POO1.setAluno(aluno1);
-		POO1.setAluno(aluno2);
-		POO1.setAluno(aluno3);
+		DisciplinaOfertada  POO1_Oferta = new DisciplinaOfertada(POO1.getNome());
 		
-		POO1.setProfessor(professor2);
+		//6- os alunos 1 e 2 sao matriculados em disciplinas de diferentes fases.
+		
+		POO1_Oferta.setAluno(aluno1);
+		POO1_Oferta.setAluno(aluno2);
+		POO1_Oferta.setAluno(aluno3);
+		
+		POO1_Oferta.setProfessor(professor2);
+		POO1_Oferta.setProfessor(professor1);
 		
 		fase2.ofertarDisciplina(POO1,bcc);
 		
-		DW1.setAluno(aluno1);
-		DW1.setAluno(aluno2);
-		DW1.setProfessor(professor2);
+		DisciplinaOfertada  DW1_Oferta = new DisciplinaOfertada(DW1.getNome());
+		
+		DW1_Oferta.setAluno(aluno1);
+		DW1_Oferta.setAluno(aluno2);
+		DW1_Oferta.setProfessor(professor1);
 		
 		fase1.ofertarDisciplina(DW1,bcc);
 		
@@ -75,9 +82,9 @@ public class Main {
 		}	
 		
 		//3- ver quais professores lessionam determinada matéria:
-		System.out.println("\nLista de professores que lessionam a matéria: "+POO1.getNome());
+		System.out.println("\nLista de professores que lessionam a matéria: "+POO1_Oferta.getNome());
 		
-		List<Professor> lista_pro = POO1.getProfessores();		
+		List<Professor> lista_pro = POO1_Oferta.getProfessores();		
 		for (Professor professor : lista_pro) {
 	            System.out.println(professor.getNome()); 
 	    }				
@@ -88,8 +95,22 @@ public class Main {
 		Avaliacao aval1 = new Avaliacao("9.5",aluno3, professor1, DW1);
 		Frequencia freq1 = new Frequencia("80%",aluno3, professor1, DW1);
 		
-		aval1.verAvaliacao();
-		freq1.verFrequencia();
+		POO1_Oferta.setAvaliacoes(aval1);
+		POO1_Oferta.setFrequencias(freq1);
+		
+		// ver freq / aval
+		List<Avaliacao> lista_aval = POO1_Oferta.getAvaliacoes();
+		
+		for(Avaliacao avaliacao : lista_aval) {
+			System.out.println("O aluno "+avaliacao.getAluno().getNome()+" teve a pontuação "+avaliacao.getAvaliacao()+" na avaliacao do professor "+avaliacao.getProfessor().getNome()); 
+		}
+		
+		List<Frequencia> lista_freq = POO1_Oferta.getFrequencias();
+		
+		for(Frequencia frequencia : lista_freq) {
+			System.out.println("O aluno "+frequencia.getAluno().getNome()+" teve a frequencia "+frequencia.getFreq()+" com o professor "+frequencia.getProfessor().getNome()); 
+		}
+		
 		
 		//5- ver quais disciplinas foram ofertadas no curso:
 		
